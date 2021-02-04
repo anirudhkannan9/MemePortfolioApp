@@ -10,13 +10,14 @@ over time. Will their :gem: :raised_hands: diamond hands :raised_hands: :gem: pa
 :rocket: to the moon :first_quarter_moon_with_face: :full_moon_with_face:, or will they lose it all and prove the 
 :rainbow: :bear: gay bears right??
 
-Users will be people interested in everything *r/wallstreetbets*. Alternatively, **activists** who are interested in 
+Users will be people interested in everything *r/wallstreetbets*. Alternatively, :triumph: **activists** :triumph: who are interested in 
 sticking it to Wall Street, on behalf of Main Street, are also welcome to use the application. 
 
 NB: if you are an experienced investor looking for an intelligent way to understand your portfolio and risk profile, 
 please head elsewhere. 
 
-## :rainbow: :bear: User stories
+## :gem: :raised_hands: :rainbow: :bear: :rocket: :rocket: :rocket: :first_quarter_moon_with_face: 
+## :first_quarter_moon_with_face: User stories
 
 User stories:
 - As a user, I want to be able to choose meme stonks to YOLO (add to my portfolio)
