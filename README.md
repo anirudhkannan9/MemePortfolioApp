@@ -5,7 +5,7 @@
 My application will allow users to create a portfolio consisting of meme stocks, in the style of Reddit's 
 *r/wallstreetbets* community. Users will be able to pick stocks from a pre-defined list, or add their own stonks to YOLO.
 
-Users (the correct vernacular is autists and/or retards) will be able to run a simulation of how their stocks perform 
+Users (the correct vernacular is autists/retards/cucks) will be able to run a simulation of how their stocks perform 
 over time. Will their :gem: :raised_hands: diamond hands :raised_hands: :gem: pay off as their stock goes :rocket: 
 :rocket: to the moon :first_quarter_moon_with_face: :full_moon_with_face:, or will they lose it all and prove the 
 :rainbow: :bear: gay bears right??
@@ -14,7 +14,7 @@ Users will be people interested in everything *r/wallstreetbets*. Alternatively,
 sticking it to Wall Street, on behalf of Main Street, are also welcome to use the application. 
 
 NB: if you are an experienced investor looking for an intelligent way to understand your portfolio and risk profile, 
-please head elsewhere. 
+please head elsewhere. Only degenerate "investors" welcome.
 
 ## :gem: :raised_hands: :rainbow: :bear: :rocket: :rocket: :rocket: :first_quarter_moon_with_face: 
 ## :first_quarter_moon_with_face: User stories
