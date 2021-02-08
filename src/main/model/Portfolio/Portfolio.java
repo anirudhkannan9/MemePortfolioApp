@@ -12,8 +12,7 @@ import java.util.List;
 
 public class Portfolio {
     //constants
-
-
+    private final double CHICKEN_TENDIES_PRICE = 1.099;
 
     //fields
     List<Stock> portfolio;
@@ -21,15 +20,17 @@ public class Portfolio {
     double currentPortfolioValue;
     double percentChange;
 
-
     //constructor
     public Portfolio() {
         portfolio = new ArrayList<>();
         currentPortfolioValue = 0;
     }
 
-
     //getters
+    public List<Stock> getPortfolio() {
+        return portfolio;
+    }
+
     public double getOldPortfolioValueDouble() {
         return oldPortfolioValue;
     }
@@ -54,15 +55,25 @@ public class Portfolio {
         return String.valueOf(percentChange);
     }
 
-
     //setters
 
     //REQUIRES:
     //MODIFIES: this
     //EFFECTS: adds Stock to portfolio (List<Stock>)
     public void addStock(Stock s) {
-        portfolio.add(s);
-        currentPortfolioValue += s.getCurrentValueDouble();
+        String ticker = s.getStockTicker();
+        boolean alreadyThere = false;
+
+        for (Stock stock : portfolio) {
+            if (stock.getStockTicker().equals(ticker)) {
+                alreadyThere = true;
+            }
+        }
+
+        if (!alreadyThere) {
+            portfolio.add(s);
+            currentPortfolioValue += s.getCurrentValueDouble();
+        }
     }
 
     //REQUIRES:
@@ -102,6 +113,101 @@ public class Portfolio {
         return summary;
     }
 
+
+    //REQUIRES: Stock s exists in portfolio (same ticker as a stock in the portfolio)
+    //MODIFIES: this
+    //EFFECTS: "Sells" stock (removes from list; subtracts currentValue of Stock from portfolioValue;
+    // displays corresponding message
+    public String sellStock(Stock s) {
+        String output = "";
+        portfolio.remove(s);
+        currentPortfolioValue -= s.getCurrentValueDouble();
+        output = "SOLD: " + s.getStockTicker() + " for $" + s.getCurrentValueString();
+        return output;
+    }
+
+    //REQUIRES: non-empty portfolio
+    //MODIFIES:
+    //EFFECTS: prints out message summarizing current holdings
+    public String holdTheLine() {
+        String msg = "HOLD THE LINE!!!! Diamond hands babyyyy ";
+        String currentStocks = "\n Keeping you in: ";
+
+        for (Stock s : portfolio) {
+            currentStocks += s.getStockTicker() + " @ $" + s.getCurrentValueString() + ", ";
+            //currentStocks += "@ ";
+        }
+
+        return msg + currentStocks;
+    }
+
+
+    //REQUIRES: non-empty portfolio
+    //MODIFIES: this
+    //EFFECTS: liquidates (sells) all stocks (MS&BS) in portfolio, adds up cash value and presents in msg to user
+//    public String liquidateGetTendies() {
+//        String liquidateOutput = "";
+//        double cashOnHand = 0;
+//        oldPortfolioValue = currentPortfolioValue;
+//        List<Stock> portfolioCopy = portfolio;
+//
+//        //loop through all stocks in portfolio, removing from portfolio, and adding ticker and value to final message
+//        for (Stock s : portfolioCopy) {
+//            String stockSoldMessage = sellStock(s);
+//            //portfolio.remove(s);
+//            //stockSoldMessage = "\n SOLD: " + s.getStockTicker() + " for $" + s.getCurrentValueString();
+//            liquidateOutput += stockSoldMessage;
+//            cashOnHand += s.getCurrentValueDouble();
+//        }
+//
+//        currentPortfolioValue = 0;
+//        liquidateOutput += "\n Portfolio empty. Portfolio value: $" + String.valueOf(currentPortfolioValue);
+//        liquidateOutput += "\n Cash on hand: $" + String.valueOf(cashOnHand);
+//        double numOfTendies = cashOnHand / CHICKEN_TENDIES_PRICE;
+//        liquidateOutput +=
+//                "\n Go get them tendies baby. You can afford: "
+//                + String.valueOf(numOfTendies)
+//                + " tendies.";
+//
+//        return liquidateOutput;
+//    }
+
+    public String liquidateGetTendies() {
+        String liquidateOutput = "";
+        double cashOnHand = 0;
+        oldPortfolioValue = currentPortfolioValue;
+        List<Stock> stocksToRemove = new ArrayList<Stock>();
+
+        //loop through all stocks in portfolio, adding ticker + value to final message and adding s to list of stocks
+        //to remove from portfolio
+        for (Stock s : portfolio) {
+            String stockSoldMessage = "\n SOLD: " + s.getStockTicker() + " for $ " + s.getCurrentValueString();
+            liquidateOutput += stockSoldMessage;
+            cashOnHand += s.getCurrentValueDouble();
+            stocksToRemove.add(s);
+        }
+
+        //remove all stocks from Portfolio
+        portfolio.removeAll(stocksToRemove);
+
+        //prepare final message regarding portfolio, cash on hand after liquidating, how many chicken tendies
+        //user can buy with the cashOnHand
+        currentPortfolioValue = 0;
+        liquidateOutput += "\n Portfolio empty. Portfolio value: $" + String.valueOf(currentPortfolioValue);
+        liquidateOutput += "\n Cash on hand: $" + String.valueOf(cashOnHand);
+        double numOfTendies = cashOnHand / CHICKEN_TENDIES_PRICE;
+        liquidateOutput +=
+                "\n Go get them tendies baby. You can afford: "
+                + String.valueOf(numOfTendies)
+                + " tendies.";
+
+        return liquidateOutput;
+
+    }
+
+
+
+
     //REQUIRES: portfolio has at least one stock
     //MODIFIES: this
     //EFFECTS: calls changeValueOverTime on each of the stocks in the portfolio
@@ -113,36 +219,20 @@ public class Portfolio {
     //REQUIRES:
     //MODIFIES:
     //EFFECTS:
-    public String liquidateGetTendies() {
-        return "";
-    }
-
-    //REQUIRES:
-    //MODIFIES:
-    //EFFECTS:
-    public String holdTheLine() {
-        return "";
-    }
-
-    //REQUIRES:
-    //MODIFIES:
-    //EFFECTS:
-    public String sellStock() {
-        return "";
-    }
-
-
-
-    //REQUIRES:
-    //MODIFIES:
-    //EFFECTS:
-    //TODO: delete this method? Can do in constructor and then never change?
-    public void setInvestorType() {}
-
-    //REQUIRES:
-    //MODIFIES:
-    //EFFECTS:
     public String consultWifesBoyfriend() {
         return "";
     }
+
+
+
+
+
+
+//    //REQUIRES:
+//    //MODIFIES:
+//    //EFFECTS:
+//    //TODO: delete this method? Can do in constructor and then never change?
+//    public void setInvestorType() {}
+
+
 }
