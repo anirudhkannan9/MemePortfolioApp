@@ -40,19 +40,30 @@ public class Portfolio {
     }
 
     public double getCurrentPortfolioValueDouble() {
+        double val = 0;
+        for (Stock s : portfolio) {
+            val += s.getCurrentValueDouble();
+        }
+        currentPortfolioValue = val;
         return currentPortfolioValue;
     }
 
     public String getCurrentPortfolioValueString() {
-        return String.valueOf(currentPortfolioValue);
+        return String.valueOf(getCurrentPortfolioValueDouble());
     }
 
     public double getPercentChangeDouble() {
+        if (oldPortfolioValue != 0) {
+            percentChange = ((currentPortfolioValue - oldPortfolioValue) / oldPortfolioValue) * 100;
+        } else {
+            percentChange = 0;
+        }
+
         return percentChange;
     }
 
     public String getPercentChangeString() {
-        return String.valueOf(percentChange);
+        return String.valueOf(getPercentChangeDouble());
     }
 
     //setters
@@ -205,15 +216,26 @@ public class Portfolio {
 
     }
 
-
-
-
     //REQUIRES: portfolio has at least one stock
     //MODIFIES: this
     //EFFECTS: calls changeValueOverTime on each of the stocks in the portfolio
     //updates oldPortfolioValue, currentPortfolioValue, and percentChange
-    public void changePortfolioValueOverTime() {
-        //stub
+    public String changePortfolioValueOverTime() {
+        oldPortfolioValue = currentPortfolioValue;
+
+        for (Stock s : portfolio) {
+            //already class-specific implementation
+            s.changeValueOverTime();
+        }
+
+        currentPortfolioValue = getCurrentPortfolioValueDouble();
+        percentChange = ((currentPortfolioValue - oldPortfolioValue) / oldPortfolioValue) * 100;
+
+        String output = "Your portfolio used to be worth: $" + getOldPortfolioValueString();
+        output += "\n Your portfolio has changed " + getPercentChangeString() + "%";
+        output += "\n Your portfolio is now worth: $" + getCurrentPortfolioValueString();
+
+        return output;
     }
 
     //REQUIRES:
@@ -222,8 +244,6 @@ public class Portfolio {
     public String consultWifesBoyfriend() {
         return "";
     }
-
-
 
 
 
