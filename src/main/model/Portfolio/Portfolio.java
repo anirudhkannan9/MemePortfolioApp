@@ -97,40 +97,21 @@ public class Portfolio {
         //add info regarding change in individual stocks to summary string
         for (Stock s : portfolio) {
             String stockinfo =
-                    "\n"
-                            + " - "
-                            + s.getStockTicker()
-                            + ": $"
-                            + s.getCurrentValueString()
-                            + "; "
-                            + s.getPercentChangeString()
-                            + "%";
-
+                    "\n" + " - " + s.getStockTicker()
+                            + ": $" + s.getCurrentValueString()
+                            + "; " + s.getPercentChangeString() + "%";
             summary += stockinfo;
 
         }
 
         //add info regarding new Portfolio value ($) to summary string
-        summary +=
-                "\n \n"
-                + " - "
-                + "NEW VALUE: $"
-                + String.valueOf(currentPortfolioValue);
+        summary += "\n \n" + " - " + "NEW VALUE: $" + String.valueOf(currentPortfolioValue);
 
         //add info regarding change in total portfolio ($) to summary string
-        summary +=
-                "\n"
-                + " - "
-                + "TOTAL CHANGE: $"
-                + String.valueOf(currentPortfolioValue - oldPortfolioValue);
+        summary += "\n" + " - " + "TOTAL CHANGE: $" + String.valueOf(currentPortfolioValue - oldPortfolioValue);
 
         //add info regarding change in total portfolio (%) to summary string
-        summary +=
-                "\n"
-                + " - "
-                + "PERCENT CHANGE: "
-                + String.valueOf(percentChange)
-                + "%";
+        summary += "\n" + " - " + "PERCENT CHANGE: " + String.valueOf(percentChange) + "%";
 
         return summary;
     }
@@ -251,7 +232,7 @@ public class Portfolio {
 
     //REQUIRES:
     //MODIFIES:
-    //EFFECTS: returns a piece of advice from the list in the WifesBoyfriendsAdvice class
+    //EFFECTS: returns a piece of advice (String) from the list in the WifesBoyfriendsAdvice class
     public String consultWifesBoyfriend() {
         return WifesBoyfriendsAdvice.getAdvice();
     }
