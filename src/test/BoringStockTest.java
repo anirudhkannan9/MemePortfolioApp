@@ -1,10 +1,12 @@
 
 
 
+import model.stock.MemeStock;
 import org.junit.jupiter.api.Test;
 
-import model.Stock.BoringStock;
+import model.stock.BoringStock;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -18,7 +20,7 @@ public class BoringStockTest {
         assertEquals(100000, bs.getCurrentValueDouble());
 
         //invoke behaviour
-        bs.changeValueOverTime();
+        bs.changeValueOverTime(0.8);
 
         //check outcome
         assertEquals("BRK.A", bs.getStockTicker());
@@ -26,5 +28,19 @@ public class BoringStockTest {
         assertTrue(bs.getCurrentValueString().contains("70000"));
         assertEquals(-30, bs.getPercentChangeDouble());
         assertTrue(bs.getPercentChangeString().contains("-30"));
+    }
+
+    @Test
+    public void testRandomDouble() {
+        //setup
+        BoringStock msft = new BoringStock("MSFT", 100);
+
+        //invoke desired behaviour
+        double d = msft.randomDouble();
+
+        //check output
+        assertNotNull(d);
+        assertTrue(d > 0);
+        assertTrue (d < 1);
     }
 }

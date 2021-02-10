@@ -1,9 +1,8 @@
-package model.Portfolio;
+package model.portfolio;
 
 
 
-import model.Stock.*;
-import model.Portfolio.WifesBoyfriendsAdvice;
+import model.stock.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.List;
 
 public class Portfolio {
     //constants
-    private final double CHICKEN_TENDIES_PRICE = 1.099;
+    private static final double CHICKEN_TENDIES_PRICE = 1.099;
 
     //fields
     List<Stock> portfolio;
@@ -92,7 +91,7 @@ public class Portfolio {
     //MODIFIES:
     //EFFECTS: prints a summary of the currentValue and change thereof (if any) of all stocks in the Portfolio
     public String viewLossPorn() {
-        String summary = "";
+        String summary = "POSITIONS";
 
         //add info regarding change in individual stocks to summary string
         for (Stock s : portfolio) {
@@ -137,7 +136,7 @@ public class Portfolio {
         String currentStocks = "\n Keeping you in: ";
 
         for (Stock s : portfolio) {
-            currentStocks += s.getStockTicker() + " @ $" + s.getCurrentValueString() + ", ";
+            currentStocks += "\n" + s.getStockTicker() + " @ $" + s.getCurrentValueString() + ", ";
             //currentStocks += "@ ";
         }
 
@@ -217,7 +216,8 @@ public class Portfolio {
 
         for (Stock s : portfolio) {
             //already class-specific implementation
-            s.changeValueOverTime();
+            double d = s.randomDouble();
+            s.changeValueOverTime(d);
         }
 
         currentPortfolioValue = getCurrentPortfolioValueDouble();
