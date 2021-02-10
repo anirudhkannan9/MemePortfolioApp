@@ -3,6 +3,7 @@ package model.Portfolio;
 
 
 import model.Stock.*;
+import model.Portfolio.WifesBoyfriendsAdvice;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -240,12 +241,10 @@ public class Portfolio {
 
     //REQUIRES:
     //MODIFIES:
-    //EFFECTS:
+    //EFFECTS: returns a piece of advice from the list in the WifesBoyfriendsAdvice class
     public String consultWifesBoyfriend() {
-        return "";
+        return WifesBoyfriendsAdvice.getAdvice();
     }
-
-
 
 
 //    //REQUIRES:
