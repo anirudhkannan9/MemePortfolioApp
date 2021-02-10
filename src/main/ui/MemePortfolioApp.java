@@ -75,7 +75,7 @@ public class MemePortfolioApp {
         }
     }
     // MODIFIES: this
-    // EFFECTS: initializes state
+    // EFFECTS: initializes state of Scanner input
 
     private void init() {
         //cheq = new Account("Joe", 145.00);
