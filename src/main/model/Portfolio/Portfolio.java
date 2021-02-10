@@ -100,27 +100,37 @@ public class Portfolio {
                     "\n"
                             + " - "
                             + s.getStockTicker()
-                            + ": "
+                            + ": $"
                             + s.getCurrentValueString()
                             + "; "
-                            + s.getPercentChangeString();
+                            + s.getPercentChangeString()
+                            + "%";
 
             summary += stockinfo;
 
         }
 
-        //add info regarding change in total portfolio ($) to summary string
+        //add info regarding new Portfolio value ($) to summary string
         summary +=
                 "\n \n"
                 + " - "
-                + "TOTAL CHANGE: "
+                + "NEW VALUE: $"
+                + String.valueOf(currentPortfolioValue);
+
+        //add info regarding change in total portfolio ($) to summary string
+        summary +=
+                "\n"
+                + " - "
+                + "TOTAL CHANGE: $"
                 + String.valueOf(currentPortfolioValue - oldPortfolioValue);
 
         //add info regarding change in total portfolio (%) to summary string
         summary +=
                 "\n"
+                + " - "
                 + "PERCENT CHANGE: "
-                + String.valueOf(percentChange);
+                + String.valueOf(percentChange)
+                + "%";
 
         return summary;
     }
