@@ -1,0 +1,71 @@
+
+import model.stock.MemeStock;
+import model.stock.RandomDouble;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MemeStockTest {
+
+    @Test
+    public void testChangeValueOverTimeMemeStockBoom() {
+        //setup - create new MemeStock, randomdouble
+        MemeStock tsla = new MemeStock("TSLA", 852);
+        double d = 0.14;
+
+        //invoke desired behaviour -- tsla.changeValueOverTime()
+        tsla.changeValueOverTime(d);
+
+        //check.
+        assertTrue(tsla.getCurrentValueDouble() > tsla.getOldValueDouble());
+        assertTrue(tsla.getCurrentValueDouble() == tsla.getOldValueDouble() * 10);
+        assertTrue(tsla.getPercentChangeDouble() == 1000);
+        assertTrue(tsla.getPercentChangeString().contains("1000"));
+
+        if (tsla.getCurrentValueDouble() == tsla.getOldValueDouble()*10) {
+
+        } else {
+            assertTrue(tsla.getPercentChangeDouble() == 1);
+            assertTrue(tsla.getPercentChangeString().contains("1"));
+
+        }
+        assertEquals("TSLA", tsla.getStockTicker());
+        assertNotNull(tsla.getCurrentValueString());
+        assertTrue(tsla.getOldValueString().contains("852"));
+    }
+
+    @Test
+    public void testChangeValueOverTimeMemeStockNoBoom() {
+        //setup - create new MemeStock, randomdouble
+        MemeStock tsla = new MemeStock("TSLA", 852);
+        double d = 0.4;
+
+        //invoke desired behaviour -- tsla.changeValueOverTime()
+        tsla.changeValueOverTime(d);
+
+        //check.
+        assertTrue(tsla.getCurrentValueDouble() > tsla.getOldValueDouble());
+        assertTrue(tsla.getCurrentValueDouble() == tsla.getOldValueDouble() * 1.01);
+        assertTrue(tsla.getPercentChangeDouble() == 1);
+        assertTrue(tsla.getPercentChangeString().contains("1"));
+        assertEquals("TSLA", tsla.getStockTicker());
+        assertNotNull(tsla.getCurrentValueString());
+        assertTrue(tsla.getOldValueString().contains("852"));
+    }
+
+    @Test
+    public void testRandomDouble() {
+        //setup
+        MemeStock tsla = new MemeStock("TSLA", 852);
+
+        //invoke desired behaviour
+        double d = tsla.randomDouble();
+
+        //check output
+        assertNotNull(d);
+        assertTrue(d > 0);
+        assertTrue (d < 1);
+    }
+
+
+}
