@@ -7,10 +7,10 @@ import java.util.Random;
 public interface Stock {
 
     public void changeValueOverTime(double d);
-    
+
     public double randomDouble();
 
-    //getters that each Stock should implement
+    //getters that each Stock should implement (additional comment for commit)
     String getStockTicker();
 
     double getCurrentValueDouble();
