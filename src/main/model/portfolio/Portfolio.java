@@ -2,7 +2,9 @@ package model.portfolio;
 
 
 
-import model.stock.*;
+import model.stock.Stock;
+import model.stock.BoringStock;
+import model.stock.MemeStock;
 
 import java.util.ArrayList;
 import java.util.List;
