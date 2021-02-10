@@ -53,6 +53,7 @@ public class MemeStockTest {
         assertTrue(tsla.getOldValueString().contains("852"));
     }
 
+    //testing randomDouble
     @Test
     public void testRandomDouble() {
         //setup

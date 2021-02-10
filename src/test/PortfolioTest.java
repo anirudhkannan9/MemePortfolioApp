@@ -711,6 +711,7 @@ public class PortfolioTest {
 
     }
 
+    //testing get
     @Test
     public void getPercentChangeDoubleOldPortfolioValueIsZero() {
         //setup - create new Portfolio
