@@ -562,8 +562,8 @@ public class PortfolioTest {
         assertTrue(portList.contains(tsla));
 
         Stock msftAfterChangePortValueOverTime = portList.get(0);
-        assertTrue(msftAfterChangePortValueOverTime.getCurrentValueDouble() == 70);
-        assertTrue(msftAfterChangePortValueOverTime.getPercentChangeDouble() == -30);
+        assertTrue(msftAfterChangePortValueOverTime.getCurrentValueDouble() == 90);
+        assertTrue(msftAfterChangePortValueOverTime.getPercentChangeDouble() == -10);
         Stock tslaAfterChangePortValueOverTime = portList.get(1);
         assertTrue(tslaAfterChangePortValueOverTime.getCurrentValueDouble() > 852);
         assertTrue(tslaAfterChangePortValueOverTime.getPercentChangeDouble() > 0);
@@ -722,6 +722,22 @@ public class PortfolioTest {
         //check output
         assertNotNull(pct);
         assertTrue(pct == 0);
+    }
+
+    @Test
+    public void testGetOldPortfolioValueDouble() {
+        //setup - create new Portfolio, create MS, add stock to portfolio
+        portfolio = new Portfolio();
+        MemeStock tsla = new MemeStock("TSLA", 852);
+        portfolio.addStock(tsla);
+
+        //invoke desired behaviour - getOldPortfolioValueDouble
+        double oldVal = portfolio.getOldPortfolioValueDouble();
+
+        //check output
+        assertNotNull(oldVal);
+        assertNotEquals(oldVal, portfolio.getCurrentPortfolioValueDouble());
+
     }
 
 }

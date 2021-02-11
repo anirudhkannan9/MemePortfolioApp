@@ -136,6 +136,9 @@ public class MemePortfolioApp {
         }
     }
 
+    //REQUIRES: boolean keepAddingMemeStock is true initially
+    //MODIFIES: portfolio, memeStocks
+    //EFFECTS: processes user input with regards to adding MemeStock to portfolio
     private boolean processAddingMemeStockInput(boolean keepAddingMemeStock) {
         try {
             int command = input.nextInt();
