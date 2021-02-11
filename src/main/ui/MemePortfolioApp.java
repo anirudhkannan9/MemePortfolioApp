@@ -247,7 +247,7 @@ public class MemePortfolioApp {
 
     //REQUIRES:
     //MODIFIES:
-    //EFFECTS: prints out some advice from your wife's boyfriend
+    //EFFECTS: prints out some advice from your wife's boyfriend, complete with dramatic pauses
     private void consultWifesBoyfriend() {
         System.out.println("You've chosen to consult with your wife's boyfriend. Here are his dictums: ");
         System.out.println("-----------------------------");
