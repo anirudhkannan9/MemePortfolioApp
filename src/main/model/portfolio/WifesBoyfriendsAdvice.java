@@ -205,6 +205,8 @@ public class WifesBoyfriendsAdvice {
         l.add("Greed is good.");
         l.add("Why do you hold it in?");
         l.add("Turn on, tune in, drop out");
+        l.add("I am the Lord your God");
+        l.add("Don't copy your neighbours");
     }
 
 }

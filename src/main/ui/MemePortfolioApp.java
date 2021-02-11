@@ -1,14 +1,17 @@
 package ui;
 
+import jdk.internal.util.xml.impl.Input;
 import model.portfolio.Portfolio;
 import model.stock.BoringStock;
 import model.stock.MemeStock;
 import model.stock.Stock;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class MemePortfolioApp {
     private Scanner input;
@@ -69,6 +72,8 @@ public class MemePortfolioApp {
             incrementTime();
         } else if (command.equals("s")) {
             viewLossPorn();
+        } else if (command.equals("a")) {
+            consultWifesBoyfriend();
         } else if (command.equals("l")) {
             liquidatePortfolio();
         } else if (command.equals("h")) {
@@ -116,8 +121,10 @@ public class MemePortfolioApp {
     //EFFECTS: adds pre-defined MemeStocks to list of MemeStocks to be displayed to user
     //Adds the MemeStock(s) that the user selects to portfolio, removes from list memeStocks
     private void addMemeStock() {
-        //add pre-defined MemeStocks to list memeStocks
-        populateMemeStocks();
+        //add pre-defined MemeStocks to list memeStocks, if empty
+        if (memeStocks.size() == 0) {
+            populateMemeStocks();
+        }
         boolean keepAddingMemeStock = true;
 
         while (keepAddingMemeStock) {
@@ -155,6 +162,8 @@ public class MemePortfolioApp {
             System.out.println("Returning to main menu.");
             keepAddingMemeStock = false;
             String command = input.next();
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Please choose an element from within the list.");
         }
         return keepAddingMemeStock;
     }
@@ -201,10 +210,16 @@ public class MemePortfolioApp {
 
         //prompt user input: Stock price
         System.out.println("Enter the price of the stock you'd like to add:");
-        int price = input.nextInt();
+        int price = 0;
+        try {
+            price = input.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Please only enter integers for the stock price.");
+            price = input.nextInt();
+        }
 
         //add stock to portfolio
-        System.out.println("Adding " + ticker + " to your portfolio @ $" + price);
+        System.out.println("Adding '" + ticker + "' to your portfolio @ $" + price);
         BoringStock bs = new BoringStock(ticker, price);
         portfolio.addStock(bs);
 
@@ -234,7 +249,29 @@ public class MemePortfolioApp {
     //MODIFIES:
     //EFFECTS: prints out some advice from your wife's boyfriend
     private void consultWifesBoyfriend() {
+        System.out.println("You've chosen to consult with your wife's boyfriend. Here are his dictums: ");
+        System.out.println("-----------------------------");
+        System.out.println("1. " + portfolio.consultWifesBoyfriend());
+        wait(4);
+        System.out.println("-----------------------------");
+        System.out.println("2. " + portfolio.consultWifesBoyfriend());
+        wait(3);
+        System.out.println("-----------------------------");
+        System.out.println("3. " + portfolio.consultWifesBoyfriend());
+        System.out.println("-----------------------------");
+        wait(3);
+        System.out.println("\nChad has spoken.");
+    }
 
+    //REQUIRES:
+    //MODIFIES:
+    //EFFECTS: waits for i seconds
+    private void wait(int i) {
+        try {
+            TimeUnit.SECONDS.sleep(i);
+        } catch (InterruptedException e) {
+            System.out.println("Nothing to see here...");
+        }
     }
 
     //REQUIRES: portfolio is non-empty
@@ -242,14 +279,14 @@ public class MemePortfolioApp {
     //EFFECTS: calls portfolio.liquidateGetTendies() on this.portfolio
     private void liquidatePortfolio() {
         System.out.println("Liquidating all your holdings. Paper hands :(");
-        portfolio.liquidateGetTendies();
+        System.out.println(portfolio.liquidateGetTendies());
     }
 
     //REQUIRES: portfolio is non-empty
     //MODIFIES:
     //EFFECTS calls portfolio.holdTheLine() on this.portfolio
     private void holdTheLine() {
-        portfolio.holdTheLine();
+        System.out.println(portfolio.holdTheLine());
     }
 
 }
