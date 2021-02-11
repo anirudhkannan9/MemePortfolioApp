@@ -8,7 +8,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
 public class PortfolioTest {
     Portfolio portfolio;
     MemeStock ms;
@@ -21,7 +20,6 @@ public class PortfolioTest {
 //        ms = new MemeStock("TSLA", 852);
 //        bs = new BoringStock("MSFT", 242);
 //    }
-
 
     @Test
     public void testaddOneMemeStock() {

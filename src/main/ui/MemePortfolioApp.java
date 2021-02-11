@@ -132,29 +132,28 @@ public class MemePortfolioApp {
             System.out.println("\nType any letter to return to the main menu");
 
             //process user input
-            try {
-                int command = input.nextInt();
-                //TODO: avoid too large a number
-                if (command > 23) {
-                    System.out.println("Please choose an element from within the list.");
-                } else {
-                    command--;
-                    Stock stockToAdd = memeStocks.get(command);
-                    portfolio.addStock(stockToAdd);
-                    memeStocks.remove(stockToAdd);
-                    System.out.println("Added " + stockToAdd.getStockTicker() + " to your portfolio.");
-                }
-
-            } catch (InputMismatchException e) {
-                System.out.println("Returning to main menu.");
-                keepAddingMemeStock = false;
-                String command = input.next();
-            }
-
+            keepAddingMemeStock = processAddingMemeStockInput(keepAddingMemeStock);
         }
-        //recursive behaviour - call again?
+    }
 
-        //handle case when user has added all MemeStocks
+    private boolean processAddingMemeStockInput(boolean keepAddingMemeStock) {
+        try {
+            int command = input.nextInt();
+            if (command > 23) {
+                System.out.println("Please choose an element from within the list.");
+            } else {
+                command--;
+                Stock stockToAdd = memeStocks.get(command);
+                portfolio.addStock(stockToAdd);
+                memeStocks.remove(stockToAdd);
+                System.out.println("Added " + stockToAdd.getStockTicker() + " to your portfolio.");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Returning to main menu.");
+            keepAddingMemeStock = false;
+            String command = input.next();
+        }
+        return keepAddingMemeStock;
     }
 
 
