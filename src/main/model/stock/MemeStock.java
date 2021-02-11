@@ -5,7 +5,7 @@ import java.util.Random;
 //The MemeStock class represents the information of a stock that a user can add to/have in their portfolio
 public class MemeStock implements Stock, RandomDouble {
     //constants
-    static final double CHANCE_OF_BOOM = 0.15;
+    static final double CHANCE_OF_BOOM = 0.1;
 
     //fields
     double oldValue;
@@ -73,8 +73,8 @@ public class MemeStock implements Stock, RandomDouble {
             currentValue *= 1.01;
             percentChange = 1;
         } else {
-            currentValue *= 10;
-            percentChange = 1000;
+            currentValue *= 5;
+            percentChange = 500;
         }
     }
 

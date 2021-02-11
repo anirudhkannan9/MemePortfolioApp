@@ -1,16 +1,19 @@
 package ui;
 
 import model.portfolio.Portfolio;
+import model.stock.BoringStock;
 import model.stock.MemeStock;
 import model.stock.Stock;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class MemePortfolioApp {
     private Scanner input;
     private Portfolio portfolio;
-    private ArrayList<MemeStock> memeStocks;
+    private List<Stock> memeStocks = new ArrayList<>();
 
     //EFFECTS: runs the meme portfolio application
     public MemePortfolioApp() {
@@ -91,6 +94,7 @@ public class MemePortfolioApp {
         System.out.println("\tb -> create your own stock to add to your portfolio");
         System.out.println("\ti -> increment time");
         System.out.println("\ts -> see how your portfolio is doing");
+        System.out.println("\ta -> get advice from your wife's boyfriend");
         System.out.println("\tl -> liquidate your portfolio");
         System.out.println("\th -> hold the line - don't sell anything - diamond hands baby");
         System.out.println("\tq -> quit");
@@ -114,54 +118,106 @@ public class MemePortfolioApp {
     private void addMemeStock() {
         //add pre-defined MemeStocks to list memeStocks
         populateMemeStocks();
+        boolean keepAddingMemeStock = true;
 
-        //display list of MemeStocks, along w/ number
+        while (keepAddingMemeStock) {
+            //prompt user input
+            System.out.println("Please enter the number of the meme stock you'd like to YOLO (add to your portfolio).");
+            //display list of MemeStocks, along w/ number
+            int i = 0;
+            for (Stock s : memeStocks) {
+                i++;
+                System.out.println(String.valueOf(i) + ". " + s.getStockTicker() + " @ $" + s.getCurrentValueString());
+            }
+            System.out.println("\nType any letter to return to the main menu");
 
-        //prompt user input
+            //process user input
+            try {
+                int command = input.nextInt();
+                //TODO: avoid too large a number
+                if (command > 23) {
+                    System.out.println("Please choose an element from within the list.");
+                } else {
+                    command--;
+                    Stock stockToAdd = memeStocks.get(command);
+                    portfolio.addStock(stockToAdd);
+                    memeStocks.remove(stockToAdd);
+                    System.out.println("Added " + stockToAdd.getStockTicker() + " to your portfolio.");
+                }
 
-        //process user input
+            } catch (InputMismatchException e) {
+                System.out.println("Returning to main menu.");
+                keepAddingMemeStock = false;
+                String command = input.next();
+            }
 
+        }
         //recursive behaviour - call again?
 
         //handle case when user has added all MemeStocks
     }
 
+
+    //REQUIRES:
+    //MODIFIES: this(.memeStocks)
+    //EFFECTS: populates this.memeStocks with pre-defined list of MemeStocks that user can add to portfolio
     private void populateMemeStocks() {
         //create new MemeStocks
         this.memeStocks.add(new MemeStock("TSLA", 815));
         this.memeStocks.add(new MemeStock("PLTR", 36));
         this.memeStocks.add(new MemeStock("FB", 269));
         this.memeStocks.add(new MemeStock("ABCL", 40));
-        //abnb
-        //dash
-        //CMPS
-        //MMED.NE
-        //LAZR
-        //gme
-        //slvr
-        //amc
-        //bb
-        //nio
-        //rkt
-        //baba
-        //gm
-        //amd
-        //nkla
-        //amzn
-        //msft
-        //aapl
-        //bynd
-        //zm
-        //qqq
-        //ge
-        //pton
-        //nvda
-        //add to this.memeStocks
+        this.memeStocks.add(new MemeStock("ABNB", 211));
+        this.memeStocks.add(new MemeStock("DASH", 211));
+        this.memeStocks.add(new MemeStock("CMPS", 45));
+        this.memeStocks.add(new MemeStock("MMED.NE", 4));
+        this.memeStocks.add(new MemeStock("LAZR", 34));
+        this.memeStocks.add(new MemeStock("GME", 58));
+        this.memeStocks.add(new MemeStock("AMC", 6));
+        this.memeStocks.add(new MemeStock("BB", 13));
+        this.memeStocks.add(new MemeStock("RKT", 211));
+        this.memeStocks.add(new MemeStock("GM", 54));
+        this.memeStocks.add(new MemeStock("AMD", 92));
+        this.memeStocks.add(new MemeStock("NKLA", 23));
+        this.memeStocks.add(new MemeStock("AMZN", 3270));
+        this.memeStocks.add(new MemeStock("MSFT", 242));
+        this.memeStocks.add(new MemeStock("AAPL", 135));
+        this.memeStocks.add(new MemeStock("BYND", 173));
+        this.memeStocks.add(new MemeStock("ZM", 430));
+        this.memeStocks.add(new MemeStock("PTON", 147));
+        this.memeStocks.add(new MemeStock("NVDA", 586));
     }
 
-    private void addBoringStock() {}
+    //REQUIRES:
+    //MODIFIES: this.portfolio
+    //EFFECTS: prompts user to provide a ticker and a price, creates a stock accordingly, and adds to portfolio
+    //displays what portfolio looks like after adding user-created stock
+    private void addBoringStock() {
+        //prompt user input: Ticker
+        System.out.println("Enter the ticker of the stock you'd like to add:");
+        String ticker = input.next();
 
-    private void incrementTime() {}
+        //prompt user input: Stock price
+        System.out.println("Enter the price of the stock you'd like to add:");
+        int price = input.nextInt();
+
+        //add stock to portfolio
+        System.out.println("Adding " + ticker + " to your portfolio @ $" + price);
+        BoringStock bs = new BoringStock(ticker, price);
+        portfolio.addStock(bs);
+
+        //summarizing new portfolio with stock added
+        System.out.println("Your portfolio currently contains: ");
+        System.out.println(portfolio.viewLossPorn());
+    }
+
+    //REQUIRES: non-empty portfolio
+    //MODIFIES: this.portfolio
+    //EFFECTS: calls changePortfolioValueOverTime() on this.portfolio
+    private void incrementTime() {
+        portfolio.changePortfolioValueOverTime();
+        System.out.println("Some time has passed. Your portfolio looks different.");
+    }
 
     //REQUIRES:
     //MODIFIES:
@@ -172,8 +228,26 @@ public class MemePortfolioApp {
         System.out.println(portfolio.viewLossPorn());
     }
 
-    private void liquidatePortfolio() {}
+    //REQUIRES:
+    //MODIFIES:
+    //EFFECTS: prints out some advice from your wife's boyfriend
+    private void consultWifesBoyfriend() {
 
-    private void holdTheLine() {}
+    }
+
+    //REQUIRES: portfolio is non-empty
+    //MODIFIES: this.portfolio
+    //EFFECTS: calls portfolio.liquidateGetTendies() on this.portfolio
+    private void liquidatePortfolio() {
+        System.out.println("Liquidating all your holdings. Paper hands :(");
+        portfolio.liquidateGetTendies();
+    }
+
+    //REQUIRES: portfolio is non-empty
+    //MODIFIES:
+    //EFFECTS calls portfolio.holdTheLine() on this.portfolio
+    private void holdTheLine() {
+        portfolio.holdTheLine();
+    }
 
 }

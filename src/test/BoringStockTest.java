@@ -27,10 +27,10 @@ public class BoringStockTest {
 
         //check outcome
         assertEquals("BRK.A", bs.getStockTicker());
-        assertEquals(70000, bs.getCurrentValueDouble());
-        assertTrue(bs.getCurrentValueString().contains("70000"));
-        assertEquals(-30, bs.getPercentChangeDouble());
-        assertTrue(bs.getPercentChangeString().contains("-30"));
+        assertEquals(90000, bs.getCurrentValueDouble());
+        assertTrue(bs.getCurrentValueString().contains("90000"));
+        assertEquals(-10, bs.getPercentChangeDouble());
+        assertTrue(bs.getPercentChangeString().contains("-10"));
     }
 
     @Test

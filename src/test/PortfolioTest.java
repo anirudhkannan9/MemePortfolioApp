@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class PortfolioTest {
     Portfolio portfolio;
@@ -531,11 +532,11 @@ public class PortfolioTest {
         assertTrue(portList.contains(msft));
 
         Stock msftAfterChangePortValueOverTime = portList.get(0);
-        assertTrue(msftAfterChangePortValueOverTime.getCurrentValueDouble() == 70);
-        assertTrue(msftAfterChangePortValueOverTime.getPercentChangeDouble() == -30);
+        assertTrue(msftAfterChangePortValueOverTime.getCurrentValueDouble() == 90);
+        assertTrue(msftAfterChangePortValueOverTime.getPercentChangeDouble() == -10);
 
-        assertTrue(portfolio.getCurrentPortfolioValueDouble() == 70);
-        assertTrue(portfolio.getPercentChangeDouble() == -30);
+        assertTrue(portfolio.getCurrentPortfolioValueDouble() == 90);
+        assertTrue(portfolio.getPercentChangeDouble() == -10);
 
         assertTrue(output.contains("Your portfolio used to be worth: $100"));
         assertTrue(output.contains("Your portfolio has changed"));

@@ -11,18 +11,18 @@ public class MemeStockTest {
     public void testChangeValueOverTimeMemeStockBoom() {
         //setup - create new MemeStock, randomdouble
         MemeStock tsla = new MemeStock("TSLA", 852);
-        double d = 0.14;
+        double d = 0.09;
 
         //invoke desired behaviour -- tsla.changeValueOverTime()
         tsla.changeValueOverTime(d);
 
         //check.
         assertTrue(tsla.getCurrentValueDouble() > tsla.getOldValueDouble());
-        assertTrue(tsla.getCurrentValueDouble() == tsla.getOldValueDouble() * 10);
-        assertTrue(tsla.getPercentChangeDouble() == 1000);
-        assertTrue(tsla.getPercentChangeString().contains("1000"));
+        assertTrue(tsla.getCurrentValueDouble() == tsla.getOldValueDouble() * 5);
+        assertTrue(tsla.getPercentChangeDouble() == 500);
+        assertTrue(tsla.getPercentChangeString().contains("500"));
 
-        if (tsla.getCurrentValueDouble() == tsla.getOldValueDouble()*10) {
+        if (tsla.getCurrentValueDouble() == tsla.getOldValueDouble()*5) {
 
         } else {
             assertTrue(tsla.getPercentChangeDouble() == 1);

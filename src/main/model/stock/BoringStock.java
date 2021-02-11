@@ -57,8 +57,8 @@ public class BoringStock implements Stock {
     //depreciates the currentValue by 30% and sets the percentChange to -0.3, representing -30%
     public void changeValueOverTime(double d) {
         oldValue = currentValue;
-        currentValue = 0.7 * currentValue;
-        percentChange = -30;
+        currentValue = 0.9 * currentValue;
+        percentChange = -10;
 
     }
 
