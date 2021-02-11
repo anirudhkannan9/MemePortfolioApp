@@ -1,12 +1,10 @@
 package ui;
 
-import jdk.internal.util.xml.impl.Input;
 import model.portfolio.Portfolio;
 import model.stock.BoringStock;
 import model.stock.MemeStock;
 import model.stock.Stock;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
