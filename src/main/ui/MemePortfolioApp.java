@@ -83,6 +83,8 @@ public class MemePortfolioApp {
     // MODIFIES: this
     // EFFECTS: initializes state of Scanner input
 
+    //MODIFIES: this(.input)
+    //EFFECTS: initializes scanner
     private void init() {
         //cheq = new Account("Joe", 145.00);
         //sav = new Account("Joe", 256.50);
