@@ -108,7 +108,7 @@ public class WifesBoyfriendsAdvice {
         l.add("Mazel tov");
         l.add("You only live twice");
         l.add("Pick up the phone and start dialling");
-        l.add("Always be closing");
+        l.add("ABC: Always be closing");
     }
 
     //REQUIRES:
@@ -207,6 +207,8 @@ public class WifesBoyfriendsAdvice {
         l.add("Turn on, tune in, drop out");
         l.add("I am the Lord your God");
         l.add("Don't copy your neighbours");
+        l.add("Are you behind on your credit card bills? Good. Pick up the phone and start dialing.");
+        l.add("Is your landlord ready to evict you? Good. Pick up the phone and start dialing.");
     }
 
 }

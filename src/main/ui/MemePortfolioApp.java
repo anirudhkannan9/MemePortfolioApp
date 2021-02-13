@@ -248,16 +248,17 @@ public class MemePortfolioApp {
     //EFFECTS: prints out some advice from your wife's boyfriend, complete with dramatic pauses
     private void consultWifesBoyfriend() {
         System.out.println("You've chosen to consult with your wife's boyfriend. Here are his dictums: ");
+        wait(3);
         System.out.println("-----------------------------");
         System.out.println("1. " + portfolio.consultWifesBoyfriend());
         wait(4);
         System.out.println("-----------------------------");
         System.out.println("2. " + portfolio.consultWifesBoyfriend());
-        wait(3);
+        wait(4);
         System.out.println("-----------------------------");
         System.out.println("3. " + portfolio.consultWifesBoyfriend());
         System.out.println("-----------------------------");
-        wait(3);
+        wait(4);
         System.out.println("\nChad has spoken.");
     }
 
