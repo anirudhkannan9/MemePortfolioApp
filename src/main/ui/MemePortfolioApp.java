@@ -4,6 +4,8 @@ import model.portfolio.Portfolio;
 import model.stock.BoringStock;
 import model.stock.MemeStock;
 import model.stock.Stock;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -12,12 +14,19 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class MemePortfolioApp {
+    private static final String JSON_STORE = "./data/workroom.json";
     private Scanner input;
     private Portfolio portfolio;
     private List<Stock> memeStocks = new ArrayList<>();
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
-    //EFFECTS: runs the meme portfolio application
+    // EFFECTS: runs application
+    //TODO: construction of portfolio that should happen here
     public MemePortfolioApp() {
+        input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runMemePortfolio();
     }
 
@@ -43,17 +52,6 @@ public class MemePortfolioApp {
         System.out.println("Goodbye!");
     }
 
-//    private void processCommand(String command) {
-//        if (command.equals("c")) {
-//            doDeposit();
-//        } else if (command.equals("w")) {
-//            doWithdrawal();
-//        } else if (command.equals("t")) {
-//            doTransfer();
-//        } else {
-//            System.out.println("Selection not valid...");
-//        }
-//    }
 
     //MODIFIES: this
     //EFFECTS: processes user command
@@ -68,7 +66,7 @@ public class MemePortfolioApp {
             addBoringStock();
         } else if (command.equals("i")) {
             incrementTime();
-        } else if (command.equals("s")) {
+        } else if (command.equals("v")) {
             viewLossPorn();
         } else if (command.equals("a")) {
             consultWifesBoyfriend();
@@ -86,8 +84,6 @@ public class MemePortfolioApp {
     //MODIFIES: this(.input)
     //EFFECTS: initializes scanner
     private void init() {
-        //cheq = new Account("Joe", 145.00);
-        //sav = new Account("Joe", 256.50);
         input = new Scanner(System.in);
     }
 
@@ -98,7 +94,7 @@ public class MemePortfolioApp {
         System.out.println("\tm -> choose a meme stock to add to your portfolio");
         System.out.println("\tb -> create your own stock to add to your portfolio");
         System.out.println("\ti -> increment time");
-        System.out.println("\ts -> see how your portfolio is doing");
+        System.out.println("\tv -> view your portfolio");
         System.out.println("\ta -> get advice from your wife's boyfriend");
         System.out.println("\tl -> liquidate your portfolio");
         System.out.println("\th -> hold the line - don't sell anything - diamond hands baby");
