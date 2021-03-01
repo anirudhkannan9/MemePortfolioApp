@@ -25,6 +25,12 @@ public class MemeStock implements Stock, RandomDouble {
 
     //getters
     //getters
+
+    @Override
+    public String getType() {
+        return type;
+    }
+
     public String getStockTicker() {
         return stockTicker;
     }

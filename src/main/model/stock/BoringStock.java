@@ -26,6 +26,12 @@ public class BoringStock implements Stock {
     }
 
     //getters
+
+    @Override
+    public String getType() {
+        return type;
+    }
+
     public String getStockTicker() {
         return stockTicker;
     }

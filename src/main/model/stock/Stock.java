@@ -25,6 +25,8 @@ public interface Stock {
 
     double getChanceOfBoom();
 
+    String getType();
+
     JSONObject toJson();
 
 
