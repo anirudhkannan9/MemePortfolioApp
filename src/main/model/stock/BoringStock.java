@@ -15,9 +15,9 @@ public class BoringStock implements Stock {
 
     //constructor
     //REQUIRES: val > 0
-    public BoringStock(String st, int val) {
-        this.currentValue = val;
+    public BoringStock(String st, double val) {
         this.stockTicker = st;
+        this.currentValue = val;
     }
 
     //getters

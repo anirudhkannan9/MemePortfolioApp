@@ -16,8 +16,8 @@ public class MemeStock implements Stock, RandomDouble {
     //constructor
     //REQUIRES: val > 0
     public MemeStock(String st, double val) {
-        this.currentValue = val;
         this.stockTicker = st;
+        this.currentValue = val;
     }
 
     //getters

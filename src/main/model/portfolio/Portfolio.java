@@ -239,12 +239,4 @@ public class Portfolio {
         return WifesBoyfriendsAdvice.getAdvice();
     }
 
-
-//    //REQUIRES:
-//    //MODIFIES:
-//    //EFFECTS:
-//    //TODO: delete this method? Can do in constructor and then never change?
-//    public void setInvestorType() {}
-
-
 }
