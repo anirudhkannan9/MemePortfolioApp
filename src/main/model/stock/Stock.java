@@ -1,6 +1,8 @@
 package model.stock;
 
 
+import org.json.JSONObject;
+
 import java.util.Random;
 
 //interface that represents functionality & data to be implemented by Stock objects
@@ -22,6 +24,8 @@ public interface Stock {
     String getPercentChangeString();
 
     double getChanceOfBoom();
+
+    JSONObject toJson();
 
 
 }

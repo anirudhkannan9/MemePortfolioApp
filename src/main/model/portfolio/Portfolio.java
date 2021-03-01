@@ -5,6 +5,9 @@ package model.portfolio;
 import model.stock.Stock;
 import model.stock.BoringStock;
 import model.stock.MemeStock;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,7 +16,7 @@ import java.util.List;
 //The Portfolio class represents information about a user's portfolio of MemeStock(s), and operations that
 //can be conducted on the Portfolio as a whole
 
-public class Portfolio {
+public class Portfolio implements Writable {
     //constants
     private static final double CHICKEN_TENDIES_PRICE = 1.099;
 
@@ -29,24 +32,22 @@ public class Portfolio {
         currentPortfolioValue = 0;
     }
 
-    //getters
-//    public List<Stock> getPortfolio() {
-//        return portfolio;
-//    }
-
     // EFFECTS: returns an unmodifiable list of stocks in this portfolio
     public List<Stock> getStocks() {
         return Collections.unmodifiableList(portfolio);
     }
 
+    //EFFECTS: returns oldPortfolioValue as a double
     public double getOldPortfolioValueDouble() {
         return oldPortfolioValue;
     }
 
+    //EFFECTS: returns oldPortfolioValue as a string
     public String getOldPortfolioValueString() {
         return String.valueOf(oldPortfolioValue);
     }
 
+    //EFFECTS: returns currentPortfolioValue as a double
     public double getCurrentPortfolioValueDouble() {
         double val = 0;
         for (Stock s : portfolio) {
@@ -56,10 +57,12 @@ public class Portfolio {
         return currentPortfolioValue;
     }
 
+    //EFFECTS: returns currentPortfolioValue as a string
     public String getCurrentPortfolioValueString() {
         return String.valueOf(getCurrentPortfolioValueDouble());
     }
 
+    //EFFECTS: returns percentChange as a double
     public double getPercentChangeDouble() {
         if (oldPortfolioValue != 0) {
             percentChange = ((currentPortfolioValue - oldPortfolioValue) / oldPortfolioValue) * 100;
@@ -70,15 +73,15 @@ public class Portfolio {
         return percentChange;
     }
 
+    //EFFECTS: returns percentChange as a string
     public String getPercentChangeString() {
         return String.valueOf(getPercentChangeDouble());
     }
 
+    //EFFECTS: returns size of this.portfolio
     public int numStocks() {
         return portfolio.size();
     }
-
-
 
     //setters
 
@@ -249,6 +252,25 @@ public class Portfolio {
     //EFFECTS: returns a piece of advice (String) from the list in the WifesBoyfriendsAdvice class
     public String consultWifesBoyfriend() {
         return WifesBoyfriendsAdvice.getAdvice();
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        //json.put("name", name);
+        json.put("stocks", stocksToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray stocksToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Stock s : portfolio) {
+            jsonArray.put(s.toJson());
+        }
+
+        return jsonArray;
     }
 
 }

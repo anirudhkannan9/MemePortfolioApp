@@ -739,7 +739,6 @@ public class PortfolioTest {
         //check output
         assertNotNull(oldVal);
         assertNotEquals(oldVal, portfolio.getCurrentPortfolioValueDouble());
-
     }
 
 }
