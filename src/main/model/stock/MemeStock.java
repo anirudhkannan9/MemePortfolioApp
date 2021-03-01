@@ -50,6 +50,11 @@ public class MemeStock implements Stock, RandomDouble {
         return String.valueOf(percentChange);
     }
 
+    @Override
+    public double getChanceOfBoom() {
+        return CHANCE_OF_BOOM;
+    }
+
     //setters
 
     //REQUIRES:

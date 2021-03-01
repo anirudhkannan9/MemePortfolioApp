@@ -1,3 +1,5 @@
+package model;
+
 import model.portfolio.Portfolio;
 import model.stock.BoringStock;
 import model.stock.MemeStock;

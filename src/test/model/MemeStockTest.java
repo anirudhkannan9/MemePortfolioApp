@@ -1,3 +1,4 @@
+package model;
 
 import model.stock.MemeStock;
 import model.stock.RandomDouble;

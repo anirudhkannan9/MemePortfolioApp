@@ -21,5 +21,7 @@ public interface Stock {
 
     String getPercentChangeString();
 
+    double getChanceOfBoom();
+
 
 }

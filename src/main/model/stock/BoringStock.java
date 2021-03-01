@@ -7,6 +7,8 @@ import java.util.Random;
 //The MemeStock class represents the information of a stock that a user can add to/have in their portfolio
 public class BoringStock implements Stock {
     //constants
+    static final double CHANCE_OF_BOOM = 0.0;
+
     //fields
     private double oldValue;
     private double currentValue;
@@ -40,6 +42,12 @@ public class BoringStock implements Stock {
     public String getPercentChangeString() {
         return String.valueOf(percentChange);
     }
+
+    @Override
+    public double getChanceOfBoom() {
+        return CHANCE_OF_BOOM;
+    }
+
 
     //setters
 

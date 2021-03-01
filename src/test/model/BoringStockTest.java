@@ -1,3 +1,4 @@
+package model;
 
 import model.stock.MemeStock;
 import org.junit.jupiter.api.BeforeEach;
