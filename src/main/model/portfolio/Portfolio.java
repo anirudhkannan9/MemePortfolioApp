@@ -7,6 +7,7 @@ import model.stock.BoringStock;
 import model.stock.MemeStock;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 //The Portfolio class represents information about a user's portfolio of MemeStock(s), and operations that
@@ -29,8 +30,13 @@ public class Portfolio {
     }
 
     //getters
-    public List<Stock> getPortfolio() {
-        return portfolio;
+//    public List<Stock> getPortfolio() {
+//        return portfolio;
+//    }
+
+    // EFFECTS: returns an unmodifiable list of stocks in this portfolio
+    public List<Stock> getStocks() {
+        return Collections.unmodifiableList(portfolio);
     }
 
     public double getOldPortfolioValueDouble() {
@@ -67,6 +73,12 @@ public class Portfolio {
     public String getPercentChangeString() {
         return String.valueOf(getPercentChangeDouble());
     }
+
+    public int numStocks() {
+        return portfolio.size();
+    }
+
+
 
     //setters
 

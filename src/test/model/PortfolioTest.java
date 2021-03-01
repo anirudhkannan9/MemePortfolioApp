@@ -33,7 +33,7 @@ public class PortfolioTest {
         portfolio.addStock(tsla);
 
         //check output: portfolio contains stock, portfolio value updated to include value of stock
-        List output = portfolio.getPortfolio();
+        List output = portfolio.getStocks();
         assertTrue(output.size() == 1);
         assertTrue(output.contains(tsla));
         assertTrue(portfolio.getCurrentPortfolioValueDouble() == 852);
@@ -49,13 +49,13 @@ public class PortfolioTest {
         portfolio.addStock(x);
 
         //check output: portfolio contains stock, portfolio value updated to include value of stock
-        List output = portfolio.getPortfolio();
+        List output = portfolio.getStocks();
         assertTrue(output.size() == 1);
         assertTrue(output.contains(x));
         assertTrue(portfolio.getCurrentPortfolioValueDouble() == 10);
 
     }
-
+//
     @Test
     public void testaddManyMemeStocks() {
         //setup
@@ -68,7 +68,7 @@ public class PortfolioTest {
         portfolio.addStock(bb);
 
         //check output: portfolio contains stock, portfolio value updated to include value of stock
-        List output = portfolio.getPortfolio();
+        List output = portfolio.getStocks();
         assertTrue(output.contains(tsla));
         assertTrue(output.contains(bb));
         assertTrue(output.size() == 2);
@@ -90,7 +90,7 @@ public class PortfolioTest {
         portfolio.addStock(xyz);
 
         //check output: portfolio contains stock, portfolio value updated to include value of stock
-        List output = portfolio.getPortfolio();
+        List output = portfolio.getStocks();
         assertTrue(output.contains(msft));
         assertTrue(output.contains(goog));
         assertTrue(output.contains(xyz));
@@ -112,7 +112,7 @@ public class PortfolioTest {
         portfolio.addStock(bs);
 
         //check output: portfolio contains stock, portfolio value updated to include value of stock
-        List output = portfolio.getPortfolio();
+        List output = portfolio.getStocks();
         assertTrue(output.size() == 2);
         assertTrue(output.contains(tsla));
         assertTrue(output.contains(bs));
@@ -133,7 +133,7 @@ public class PortfolioTest {
         portfolio.addStock(tslb);
 
         //check output: portfolio contains stock, portfolio value updated to include value of stock
-        List output = portfolio.getPortfolio();
+        List output = portfolio.getStocks();
         assertTrue(output.contains(tsla));
         assertFalse(output.contains(tslb));
         assertTrue(output.size() == 1);
@@ -154,7 +154,7 @@ public class PortfolioTest {
         portfolio.addStock(msfu);
 
         //check output: portfolio contains 1 BS, duplicate not added
-        List output = portfolio.getPortfolio();
+        List output = portfolio.getStocks();
         assertTrue(output.contains(msft));
         assertFalse(output.contains(msfu));
         assertTrue(output.size() == 1);
@@ -174,7 +174,7 @@ public class PortfolioTest {
         portfolio.addStock(msfu);
 
         //check output: portfolio contains 1 BS, 0 MS, duplicate not added
-        List output = portfolio.getPortfolio();
+        List output = portfolio.getStocks();
         assertTrue(output.contains(msft));
         assertFalse(output.contains(msfu));
         assertTrue(output.size() == 1);
@@ -195,13 +195,13 @@ public class PortfolioTest {
         portfolio.addStock(msfu);
 
         //check output: portfolio contains 1 MS, 0 BS, duplicate BS not added
-        List output = portfolio.getPortfolio();
+        List output = portfolio.getStocks();
         assertTrue(output.contains(msft));
         assertFalse(output.contains(msfu));
         assertTrue(output.size() == 1);
         assertTrue(portfolio.getCurrentPortfolioValueDouble() == 3);
     }
-//
+
 
     @Test
     public void testSellOneMemeStock() {
@@ -256,7 +256,7 @@ public class PortfolioTest {
         assertTrue(holdTheLine.contains("TSLA @ $852"));
     }
 
-    //
+
     @Test
     public void testHoldTheLineManyMemeStocks() {
         //setup - create portfolio, 2x MS, add MSes to portfolio
@@ -355,7 +355,7 @@ public class PortfolioTest {
 
         //invoke desired behaviour
         String liquidateOutput = portfolio.liquidateGetTendies();
-        List<Stock> portfolioList = portfolio.getPortfolio();
+        List<Stock> portfolioList = portfolio.getStocks();
 
         //check output - String that lists all (1) stocks that've been sold
         //and presents cash value of entire portfolio
@@ -377,7 +377,7 @@ public class PortfolioTest {
 
         //invoke desired behaviour
         String liquidateOutput = portfolio.liquidateGetTendies();
-        List<Stock> portfolioList = portfolio.getPortfolio();
+        List<Stock> portfolioList = portfolio.getStocks();
 
         //check output - String that lists all (1) stocks that've been sold
         //and presents cash value of entire portfolio
@@ -401,7 +401,7 @@ public class PortfolioTest {
 
         //invoke desired behaviour
         String liquidateOutput = portfolio.liquidateGetTendies();
-        List<Stock> portfolioList = portfolio.getPortfolio();
+        List<Stock> portfolioList = portfolio.getStocks();
 
         //check output - String that lists all (1) stocks that've been sold
         //and presents cash value of entire portfolio
@@ -431,7 +431,7 @@ public class PortfolioTest {
 
         //invoke desired behaviour
         String liquidateOutput = portfolio.liquidateGetTendies();
-        List<Stock> portfolioList = portfolio.getPortfolio();
+        List<Stock> portfolioList = portfolio.getStocks();
 
         //check output - String that lists all (1) stocks that've been sold
         //and presents cash value of entire portfolio
@@ -465,7 +465,7 @@ public class PortfolioTest {
 
         //invoke desired behaviour
         String liquidateOutput = portfolio.liquidateGetTendies();
-        List<Stock> portfolioList = portfolio.getPortfolio();
+        List<Stock> portfolioList = portfolio.getStocks();
 
         //check output - String that lists all (1) stocks that've been sold
         //and presents cash value of entire portfolio
@@ -494,7 +494,7 @@ public class PortfolioTest {
 
         //invoke desired behaviour - portfolio.changePortfolioValueOverTime()
         String output = portfolio.changePortfolioValueOverTime();
-        List<Stock> portList = portfolio.getPortfolio();
+        List<Stock> portList = portfolio.getStocks();
 
         //check output - still contains same stock etc., but value of stock & portfolio are higher - MS
         //also check that right message printed
@@ -525,7 +525,7 @@ public class PortfolioTest {
 
         //invoke desired behaviour - portfolio.changePortfolioValueOverTime()
         String output = portfolio.changePortfolioValueOverTime();
-        List<Stock> portList = portfolio.getPortfolio();
+        List<Stock> portList = portfolio.getStocks();
 
         //check output - still contains same stock etc., but value of stock/portfolio are different (lower - BS)
         assertTrue(portList.size() == 1);
@@ -556,7 +556,7 @@ public class PortfolioTest {
 
         //invoke desired behaviour - portfolio.changePortfolioValueOverTime()
         String output = portfolio.changePortfolioValueOverTime();
-        List<Stock> portList = portfolio.getPortfolio();
+        List<Stock> portList = portfolio.getStocks();
 
         //check output - still contains same stock etc., but value of stock/portfolio are different
         assertTrue(portList.size() == 2);
