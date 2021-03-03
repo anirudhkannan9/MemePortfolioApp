@@ -1,0 +1,12 @@
+{"stocks": [
+    {
+        "ticker": "TSLA",
+        "type": "MemeStock",
+        "value": "852.0"
+    },
+    {
+        "ticker": "BRNG",
+        "type": "BoringStock",
+        "value": "100.0"
+    }
+]}

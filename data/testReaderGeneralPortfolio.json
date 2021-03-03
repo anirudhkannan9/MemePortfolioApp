@@ -1,0 +1,14 @@
+{
+  "stocks": [
+    {
+      "type": "MemeStock",
+      "ticker": "PLTR",
+      "value": "100.0"
+    },
+    {
+      "type": "BoringStock",
+      "ticker": "BRK.A",
+      "value": "284000"
+    }
+  ]
+}
