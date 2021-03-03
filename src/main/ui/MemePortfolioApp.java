@@ -7,6 +7,8 @@ import model.stock.Stock;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -14,7 +16,7 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class MemePortfolioApp {
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/portfolio.json";
     private Scanner input;
     private Portfolio portfolio;
     private List<Stock> memeStocks = new ArrayList<>();
@@ -74,6 +76,10 @@ public class MemePortfolioApp {
             liquidatePortfolio();
         } else if (command.equals("h")) {
             holdTheLine();
+        } else if (command.equals("s")) {
+            savePortfolio();
+        } else if (command.equals("r")) {
+            readPortfolio();
         } else {
             System.out.println("Selection not valid. Please select from the options provided.");
         }
@@ -98,6 +104,8 @@ public class MemePortfolioApp {
         System.out.println("\ta -> get advice from your wife's boyfriend");
         System.out.println("\tl -> liquidate your portfolio");
         System.out.println("\th -> hold the line - don't sell anything - diamond hands baby");
+        System.out.println("\ts -> save your portfolio to a file");
+        System.out.println("\tr -> read and load your previously saved portfolio from a file");
         System.out.println("\tq -> quit");
     }
 
@@ -284,6 +292,31 @@ public class MemePortfolioApp {
     //EFFECTS calls portfolio.holdTheLine() on this.portfolio
     private void holdTheLine() {
         System.out.println(portfolio.holdTheLine());
+    }
+
+    //REQUIRES: portfolio has been instantiated
+    //MODIFIES: this
+    //EFFECTS: saves the workroom to file
+    private void savePortfolio() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(portfolio);
+            jsonWriter.close();
+            System.out.println("Saved portfolio to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: reads portfolio from file
+    private void readPortfolio() {
+        try {
+            portfolio = jsonReader.read();
+            System.out.println("Loaded portfolio from" + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
 }
