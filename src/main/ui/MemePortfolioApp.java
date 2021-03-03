@@ -70,8 +70,6 @@ public class MemePortfolioApp {
             incrementTime();
         } else if (command.equals("v")) {
             viewLossPorn();
-        } else if (command.equals("a")) {
-            consultWifesBoyfriend();
         } else if (command.equals("l")) {
             liquidatePortfolio();
         } else if (command.equals("h")) {
