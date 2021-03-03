@@ -70,18 +70,30 @@ public class MemePortfolioApp {
             incrementTime();
         } else if (command.equals("v")) {
             viewLossPorn();
+        } else if (command.equals("a")) {
+            consultWifesBoyfriend();
         } else if (command.equals("l")) {
             liquidatePortfolio();
         } else if (command.equals("h")) {
             holdTheLine();
-        } else if (command.equals("s")) {
-            savePortfolio();
-        } else if (command.equals("r")) {
-            readPortfolio();
+        } else if (command.equals("s") || command.equals("r")) {
+            saveReadCommand(command);
         } else {
             System.out.println("Selection not valid. Please select from the options provided.");
         }
     }
+
+    //MODIFIES: this
+    //EFFECTS: takes + processes input for saving/loading functionality
+    private void saveReadCommand(String command) {
+        if (command.equals("s")) {
+            savePortfolio();
+        } else {
+            readPortfolio();
+        }
+    }
+        
+
     // MODIFIES: this
     // EFFECTS: initializes state of Scanner input
 
