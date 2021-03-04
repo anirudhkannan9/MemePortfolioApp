@@ -41,4 +41,13 @@ public class BoringStockTest {
         assertTrue(d > 0);
         assertTrue (d < 1);
     }
+
+    @Test
+    public void testGetChanceOfBoom() {
+        BoringStock msft = new BoringStock("MSFT", 100);
+
+        double d = msft.getChanceOfBoom();
+
+        assertEquals(0.0, d);
+    }
 }

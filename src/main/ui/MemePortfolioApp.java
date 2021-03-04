@@ -92,7 +92,7 @@ public class MemePortfolioApp {
             readPortfolio();
         }
     }
-        
+
 
     // MODIFIES: this
     // EFFECTS: initializes state of Scanner input

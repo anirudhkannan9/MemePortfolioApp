@@ -101,4 +101,5 @@ public class MemeStock implements Stock, RandomDouble {
         return json;
     }
 
+
 }

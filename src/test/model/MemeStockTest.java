@@ -69,5 +69,15 @@ public class MemeStockTest {
         assertTrue (d < 1);
     }
 
+    @Test
+    public void testGetChanceOfBoom() {
+        MemeStock msft = new MemeStock("MSFT", 100);
+
+        double d = msft.getChanceOfBoom();
+
+        assertEquals(0.1, d);
+    }
+
+
 
 }
