@@ -92,20 +92,35 @@ public class Portfolio implements Writable {
     //MODIFIES: this
     //EFFECTS: adds Stock to portfolio (List<Stock>)
     public void addStock(Stock s) {
+//        String ticker = s.getStockTicker();
+//        boolean alreadyThere = false;
+//
+//        for (Stock stock : portfolio) {
+//            if (stock.getStockTicker().equals(ticker)) {
+//                alreadyThere = true;
+//            }
+//        }
+
+        if (!alreadyThere(s)) {
+            portfolio.add(s);
+            currentPortfolioValue += s.getCurrentValueDouble();
+        }
+    }
+
+    //REQUIRES:
+    //modifies:
+    //EFFECTS: checks if stock already in portfolio
+    public boolean alreadyThere(Stock s) {
         String ticker = s.getStockTicker();
         boolean alreadyThere = false;
-
         for (Stock stock : portfolio) {
             if (stock.getStockTicker().equals(ticker)) {
                 alreadyThere = true;
             }
         }
-
-        if (!alreadyThere) {
-            portfolio.add(s);
-            currentPortfolioValue += s.getCurrentValueDouble();
-        }
+        return alreadyThere;
     }
+
 
     //REQUIRES:
     //MODIFIES:
