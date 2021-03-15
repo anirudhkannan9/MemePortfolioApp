@@ -29,5 +29,7 @@ public interface Stock {
 
     JSONObject toJson();
 
+    String getStockSummary();
+
 
 }

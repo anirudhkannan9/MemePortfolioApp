@@ -88,4 +88,11 @@ public class BoringStock implements Stock {
         return json;
     }
 
+    //EFFECTS: return String summarizing current state of this
+    public String getStockSummary() {
+        return "\n" + " - " + this.getStockTicker()
+                + ": $" + this.getCurrentValueString()
+                + "; " + this.getPercentChangeString() + "%";
+    }
+
 }

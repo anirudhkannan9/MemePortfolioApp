@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-public class MemePortfolioApp {
+public class MemePortfolioAppConsole {
     private static final String JSON_STORE = "./data/portfolio.json";
     private Scanner input;
     private Portfolio portfolio;
@@ -25,7 +25,7 @@ public class MemePortfolioApp {
 
     // EFFECTS: runs application
     //TODO: construction of portfolio that should happen here
-    public MemePortfolioApp() {
+    public MemePortfolioAppConsole() {
         input = new Scanner(System.in);
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);

@@ -19,6 +19,8 @@ import java.util.List;
 public class Portfolio implements Writable {
     //constants
     private static final double CHICKEN_TENDIES_PRICE = 1.099;
+    public static final int WIDTH = 800;
+    public static final int HEIGHT = 600;
 
     //fields
     List<Stock> portfolio;
@@ -32,9 +34,10 @@ public class Portfolio implements Writable {
         currentPortfolioValue = 0;
     }
 
-    // EFFECTS: returns an unmodifiable list of stocks in this portfolio
+    // EFFECTS: returns a list of stocks in this portfolio
     public List<Stock> getStocks() {
-        return Collections.unmodifiableList(portfolio);
+        //return Collections.unmodifiableList(portfolio);
+        return portfolio;
     }
 
     //EFFECTS: returns oldPortfolioValue as a double
