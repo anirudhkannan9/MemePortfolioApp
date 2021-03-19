@@ -40,6 +40,11 @@ public class Portfolio implements Writable {
         return portfolio;
     }
 
+    //EFFECTS: sets list of stocks to list passed in as argument
+    public void setStocks(List<Stock> stocks) {
+        portfolio = stocks;
+    }
+
     //EFFECTS: returns oldPortfolioValue as a double
     public double getOldPortfolioValueDouble() {
         return oldPortfolioValue;
@@ -56,7 +61,7 @@ public class Portfolio implements Writable {
         for (Stock s : portfolio) {
             val += s.getCurrentValueDouble();
         }
-        currentPortfolioValue = val;
+        currentPortfolioValue = Math.floor(val);
         return currentPortfolioValue;
     }
 
@@ -68,7 +73,7 @@ public class Portfolio implements Writable {
     //EFFECTS: returns percentChange as a double
     public double getPercentChangeDouble() {
         if (oldPortfolioValue != 0) {
-            percentChange = ((currentPortfolioValue - oldPortfolioValue) / oldPortfolioValue) * 100;
+            percentChange = Math.floor(((currentPortfolioValue - oldPortfolioValue) / oldPortfolioValue) * 100);
         } else {
             percentChange = 0;
         }

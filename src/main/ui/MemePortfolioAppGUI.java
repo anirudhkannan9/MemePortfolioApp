@@ -3,6 +3,8 @@ package ui;
 import model.portfolio.Portfolio;
 import model.stock.BoringStock;
 import model.stock.MemeStock;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 import ui.panels.ButtonPanel;
 import ui.panels.PortfolioPanel;
 import ui.panels.SummaryPanel;
@@ -19,6 +21,8 @@ public class MemePortfolioAppGUI extends JFrame {
     private PortfolioPanel pp;
     private SummaryPanel sp;
     private ButtonPanel bp;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     //EFFECTS: sets up window in which Portfolio can be interacted with
     public MemePortfolioAppGUI() {
@@ -31,11 +35,10 @@ public class MemePortfolioAppGUI extends JFrame {
         //portfolio.addStock(new BoringStock("BRK.A", 284000));
         pp = new PortfolioPanel(portfolio);
         sp = new SummaryPanel(portfolio);
-        bp = new ButtonPanel(this, portfolio);
+        bp = new ButtonPanel(this, sp, portfolio);
         add(pp);
         add(sp, BorderLayout.NORTH);
         add(bp, BorderLayout.SOUTH);
-        addKeyListener(new KeyHandler());
         pack();
         centreOnScreen();
         setVisible(true);
@@ -54,17 +57,6 @@ public class MemePortfolioAppGUI extends JFrame {
         setLocation((scrn.width - getWidth()) / 2, (scrn.height - getHeight()) / 2);
     }
 
-    /*
-     * A key handler to respond to key events
-     */
-    private class KeyHandler extends KeyAdapter {
-        @Override
-        public void keyPressed(KeyEvent e) {
-            //portfolio.keyPressed(e.getKeyCode());
-            setVisible(false);
-            setVisible(true);
-        }
-    }
 
     // Start the Portfolio
     public static void main(String[] args) {

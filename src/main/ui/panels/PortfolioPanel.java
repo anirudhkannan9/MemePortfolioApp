@@ -48,17 +48,16 @@ public class PortfolioPanel extends JPanel {
         List<Stock> stocks = portfolio.getStocks();
         //create a 2nd list that only contains MemeStocks
         List<Stock> memeStocks = new ArrayList<>();
+        List<Stock> boringStocks = new ArrayList<>();
         //separate stocks into Meme and Boring
-        Iterator<Stock> iterator = stocks.iterator();
-        while (iterator.hasNext()) {
-            Stock s = iterator.next();
-
+        for (Stock s : stocks) {
             if (s instanceof MemeStock) {
                 memeStocks.add(s);
-                iterator.remove();
+            } else {
+                boringStocks.add(s);
             }
         }
-        List<Stock> boringStocks = stocks;
+
         //display the stocks of each type
         g.drawString("MEME STOCKS: ", 5, 20);
         g.drawString("boring stocks: ", Portfolio.WIDTH / 2 + 5, 20);

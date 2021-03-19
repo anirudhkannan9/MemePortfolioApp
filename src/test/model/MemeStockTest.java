@@ -46,7 +46,7 @@ public class MemeStockTest {
 
         //check.
         assertTrue(tsla.getCurrentValueDouble() > tsla.getOldValueDouble());
-        assertTrue(tsla.getCurrentValueDouble() == tsla.getOldValueDouble() * 1.01);
+        assertTrue(tsla.getCurrentValueDouble() == Math.floor(tsla.getOldValueDouble() * 1.01));
         assertTrue(tsla.getPercentChangeDouble() == 1);
         assertTrue(tsla.getPercentChangeString().contains("1"));
         assertEquals("TSLA", tsla.getStockTicker());

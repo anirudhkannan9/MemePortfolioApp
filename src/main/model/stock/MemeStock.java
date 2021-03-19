@@ -84,10 +84,10 @@ public class MemeStock implements Stock, RandomDouble {
         //double randomDouble = rd.randomDouble();
         oldValue = currentValue;
         if (d > CHANCE_OF_BOOM) {
-            currentValue *= 1.01;
+            currentValue = Math.floor(1.01 * currentValue);
             percentChange = 1;
         } else {
-            currentValue *= 5;
+            currentValue = Math.floor(5 * currentValue);
             percentChange = 500;
         }
     }

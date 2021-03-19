@@ -506,7 +506,7 @@ public class PortfolioTest {
         assertTrue(tslaAfterChangePortValueOverTime.getPercentChangeDouble() > 0);
 
         assertTrue(portfolio.getCurrentPortfolioValueDouble() > 852);
-        assertTrue(portfolio.getPercentChangeDouble() > 0);
+        assertTrue(portfolio.getPercentChangeDouble() >= 0);
 
         assertTrue(output.contains("Your portfolio used to be worth: $852"));
         assertTrue(output.contains("Your portfolio has changed"));

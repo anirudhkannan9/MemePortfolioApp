@@ -8,9 +8,9 @@ import java.awt.*;
 
 public class AddBoringStockFrame extends JFrame {
     private Portfolio portfolio;
-    //private AddMemeStockPanel addMemeStockPanel;
+    private AddBoringStockPanel addBoringStockPanel;
 
-    public AddBoringStockFrame(Portfolio p) {
+    public AddBoringStockFrame(MemePortfolioAppGUI memePortfolioAppGUI, Portfolio p) {
         setSize(380, 480);
         centreOnScreen();
         setVisible(true);
@@ -19,8 +19,8 @@ public class AddBoringStockFrame extends JFrame {
         setFont(new Font("Andale Mono", Font.BOLD, 18));
         setForeground(Color.GREEN);
         this.portfolio = p;
-        //addMemeStockPanel = new AddMemeStockPanel(memePortfolioAppGUI, portfolio);
-        //getContentPane().add(addMemeStockPanel);
+        addBoringStockPanel = new AddBoringStockPanel(memePortfolioAppGUI, portfolio);
+        getContentPane().add(addBoringStockPanel);
 
     }
 
