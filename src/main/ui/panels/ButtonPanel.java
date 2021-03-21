@@ -14,6 +14,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.File;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 public class ButtonPanel extends JPanel {
     private Portfolio portfolio;
@@ -50,8 +54,6 @@ public class ButtonPanel extends JPanel {
         addSaveButton(p);
         addLoadButton(p);
         addOtherButton();
-        //TODO: save
-        //TODO: load
     }
 
     public void addOtherButton() {
@@ -68,6 +70,8 @@ public class ButtonPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("button pressed");
+                System.out.println(System.getProperty("user.dir"));
+                playSound("/Users/kannana1/Desktop/2020WT2/CPSC 210/Project/button.wav");
                 AddMemeStockFrame amsf = new AddMemeStockFrame(memePortfolioAppGUI, p);
             }
         });
@@ -83,6 +87,7 @@ public class ButtonPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("add boring stock button pressed");
+                playSound("/Users/kannana1/Desktop/2020WT2/CPSC 210/Project/button.wav");
                 AddBoringStockFrame absf = new AddBoringStockFrame(memePortfolioAppGUI, p);
             }
         });
@@ -98,6 +103,7 @@ public class ButtonPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("increment time button pressed");
+                playSound("/Users/kannana1/Desktop/2020WT2/CPSC 210/Project/drum.wav");
                 portfolio.changePortfolioValueOverTime();
                 memePortfolioAppGUI.repaint();
                 summaryPanel.update();
@@ -117,6 +123,7 @@ public class ButtonPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("save button pressed");
+                playSound("/Users/kannana1/Desktop/2020WT2/CPSC 210/Project/button.wav");
                 try {
                     jsonWriter = new JsonWriter(JSON_STORE);
                     jsonWriter.open();
@@ -141,6 +148,7 @@ public class ButtonPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("load button pressed");
+                playSound("/Users/kannana1/Desktop/2020WT2/CPSC 210/Project/button.wav");
                 try {
                     jsonReader = new JsonReader(JSON_STORE);
                     portfolio.setStocks(jsonReader.read().getStocks());
@@ -156,6 +164,19 @@ public class ButtonPanel extends JPanel {
             }
         });
         add(loadButton);
+    }
+
+    //EFFECTS: plays sound based on path to audio file passed in
+    public void playSound(String soundName) {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch (Exception e) {
+            System.out.println("Error with playing sound.");
+            e.printStackTrace();
+        }
     }
 
     //
