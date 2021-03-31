@@ -49,7 +49,7 @@ public class AddMemeStockPanel extends JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         //System.out.println("add " + ms.getStockTicker());
-                        playSound("/Users/kannana1/Desktop/2020WT2/CPSC 210/Project/button.wav");
+                        playSound("./button.wav");
                         portfolio.addStock(ms);
                         remove(addMemeStockBtn);
                         //memePortfolioAppGUI.repaint();
