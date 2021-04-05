@@ -30,6 +30,10 @@ User stories (Phase 2):
 - As a user, I want to be able to save my Portfolio to file 
 - As a user, I want to be able to load my Portfolio from a file
 
+Phase 4: Task 2
+I chose to implement the BoringStock and MemeStock subclasses, as subtypes of the Stock interface. Each of BoringStock 
+MemeStock override the changeValueOverTime method, providing distinct implementations of the method. 
+
 
 
 
