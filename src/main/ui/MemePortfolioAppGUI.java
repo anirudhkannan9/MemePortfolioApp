@@ -21,8 +21,6 @@ public class MemePortfolioAppGUI extends JFrame {
     private PortfolioPanel pp;
     private SummaryPanel sp;
     private ButtonPanel bp;
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
 
     //EFFECTS: sets up window in which Portfolio can be interacted with
     public MemePortfolioAppGUI() {

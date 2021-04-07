@@ -11,8 +11,8 @@ import java.util.List;
 
 public class AddMemeStockFrame extends JFrame {
 
+    //fields:
     private Portfolio portfolio;
-    private List<MemeStock> memeStocks = new ArrayList<>();
     private AddMemeStockPanel addMemeStockPanel;
 
     public AddMemeStockFrame(MemePortfolioAppGUI memePortfolioAppGUI, Portfolio p) {

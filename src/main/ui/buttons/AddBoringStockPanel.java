@@ -39,6 +39,10 @@ public class AddBoringStockPanel extends JPanel {
         });
 
         setLayout(new GridBagLayout());
+        handleGridBagConstraints(tickerLabel, priceLabel, tickerField, priceField, addBtn);
+    }
+
+    private void handleGridBagConstraints(JLabel tickerLabel, JLabel priceLabel, JTextField tickerField, JTextField priceField, JButton addBtn) {
         GridBagConstraints gc = new GridBagConstraints();
 
         //First column:

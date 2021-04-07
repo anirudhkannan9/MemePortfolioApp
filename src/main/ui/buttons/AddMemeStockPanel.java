@@ -17,16 +17,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddMemeStockPanel extends JPanel {
+    //constants
     private static final int BTN_WIDTH = 180;
     private static final int BTN_HEIGHT = 30;
+
+    //fields
     private Portfolio portfolio;
     private List<MemeStock> memeStocks = new ArrayList<>();
-    private List<JButton> memeStockButtons = new ArrayList<>();
     private MemePortfolioAppGUI memePortfolioAppGUI;
 
     public AddMemeStockPanel(MemePortfolioAppGUI memePortfolioAppGUI, Portfolio p) {
         portfolio = p;
         setBackground(new Color(180, 180, 180));
+        memeStocks = new ArrayList<>();
         this.memePortfolioAppGUI = memePortfolioAppGUI;
         drawMemeStockButtons();
     }

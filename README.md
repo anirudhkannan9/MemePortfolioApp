@@ -32,8 +32,15 @@ User stories (Phase 2):
 
 Phase 4: Task 2
 I chose to implement the BoringStock and MemeStock subclasses, as subtypes of the Stock interface. Each of BoringStock 
-MemeStock override the changeValueOverTime method, providing distinct implementations of the method. 
+and MemeStock override the changeValueOverTime method, providing distinct implementations of the method. 
 
+Phase 4: Task 3
+Based on the UML class diagram, what's starkly apparent is that the current design of my program exhbits a 
+**significant** degree of coupling; primarily involving the classes required for the GUI and the Portfolio class. 
+In order to remediate this, I would use the Java Observer pattern, and replace most/all of the Portfolio fields 
+(indirectly) by adding the class to the list of Observers for Portfolio (which will extend the Observer class). I will
+call notifyObservers() every time something salient happens to the Portfolio (e.g. added a Stock, changed value over
+time), and the update() methods of the Observers would be implemented according to the specific aims of each class.
 
 
 
