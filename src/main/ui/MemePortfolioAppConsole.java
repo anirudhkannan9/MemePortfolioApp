@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+//represents the creation & running of a console version of the MemePortfolioApp
 public class MemePortfolioAppConsole {
     private static final String JSON_STORE = "./data/portfolio.json";
     private Scanner input;

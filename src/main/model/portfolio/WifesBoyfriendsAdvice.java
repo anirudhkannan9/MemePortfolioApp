@@ -3,7 +3,7 @@ package model.portfolio;
 import java.util.*;
 import java.util.Random;
 
-
+//Represents advice in the form of Strings for use in the console version of the MemePortfolioApp
 public class WifesBoyfriendsAdvice {
     private static List<String> advice = new ArrayList<>();
     //Random randomGenerator = new Random();

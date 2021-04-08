@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+//represents a panel upon which textual data representing the portfolio's state is written
 public class PortfolioPanel extends JPanel {
 
     //fields e.g. Strings that display messages

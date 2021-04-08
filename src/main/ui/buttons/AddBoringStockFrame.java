@@ -6,10 +6,13 @@ import ui.MemePortfolioAppGUI;
 import javax.swing.*;
 import java.awt.*;
 
+//represents a frame upon which a panel that allows the user to add BoringStocks will be mounted
 public class AddBoringStockFrame extends JFrame {
     private Portfolio portfolio;
     private AddBoringStockPanel addBoringStockPanel;
 
+    //MODIFIES: this
+    //EFFECTS: constructs AddBoringStockFrame with given MemePortfolioAppGUI and Portfolio
     public AddBoringStockFrame(MemePortfolioAppGUI memePortfolioAppGUI, Portfolio p) {
         setSize(380, 480);
         centreOnScreen();
@@ -30,7 +33,6 @@ public class AddBoringStockFrame extends JFrame {
         Dimension scrn = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation((scrn.width - getWidth()) / 2, (scrn.height - getHeight()) / 2);
     }
-
 
     @Override
     public void paint(Graphics g) {

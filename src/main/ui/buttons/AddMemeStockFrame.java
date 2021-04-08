@@ -9,12 +9,16 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+//represents a frame upon which a panel that allows the user to add MemeStocks will be mounted
+
 public class AddMemeStockFrame extends JFrame {
 
     //fields:
     private Portfolio portfolio;
     private AddMemeStockPanel addMemeStockPanel;
 
+    //MODIFIES: this
+    //EFFECTS: constructs AddMemeStockFrame with given MemePortfolioAppGUI and Portfolio
     public AddMemeStockFrame(MemePortfolioAppGUI memePortfolioAppGUI, Portfolio p) {
         setSize(380, 480);
         centreOnScreen();

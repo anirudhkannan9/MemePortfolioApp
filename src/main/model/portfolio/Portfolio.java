@@ -28,7 +28,8 @@ public class Portfolio implements Writable {
     double currentPortfolioValue;
     double percentChange;
 
-    //constructor
+    //MODIFIES: this
+    //EFFECTS: creates portfolio with no stocks and value of 0
     public Portfolio() {
         portfolio = new ArrayList<>();
         currentPortfolioValue = 0;
@@ -214,6 +215,9 @@ public class Portfolio implements Writable {
 //        return liquidateOutput;
 //    }
 
+    //REQUIRES: non-empty portfolio
+    //MODIFIES: this
+    //EFFECTS: sells all stocks, prints descriptive message
     public String liquidateGetTendies() {
         String liquidateOutput = "";
         double cashOnHand = 0;
@@ -277,6 +281,7 @@ public class Portfolio implements Writable {
         return WifesBoyfriendsAdvice.getAdvice();
     }
 
+    //EFFECTS: translates portfolio to JSONObject
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -285,7 +290,7 @@ public class Portfolio implements Writable {
         return json;
     }
 
-    // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: returns stocks in this portfolio as a JSON array
     private JSONArray stocksToJson() {
         JSONArray jsonArray = new JSONArray();
 

@@ -36,11 +36,13 @@ and MemeStock override the changeValueOverTime method, providing distinct implem
 
 Phase 4: Task 3
 Based on the UML class diagram, what's starkly apparent is that the current design of my program exhbits a 
-**significant** degree of coupling; primarily involving the classes required for the GUI and the Portfolio class. 
+significant degree of coupling; primarily involving the classes required for the GUI and the Portfolio class. 
 In order to remediate this, I would use the Java Observer pattern, and replace most/all of the Portfolio fields 
 (indirectly) by adding the class to the list of Observers for Portfolio (which will extend the Observer class). I will
 call notifyObservers() every time something salient happens to the Portfolio (e.g. added a Stock, changed value over
 time), and the update() methods of the Observers would be implemented according to the specific aims of each class.
 
-
+**NOTE ABOUT TASK 3 (UML DIAGRAM)**: The UML diagram attached should contain an 'implements' relationship between
+the class MemeStock and the interface RandomDouble; I couldn't get this to work in the UML diagram drawing program, so
+I omitted it from the diagram. 
 

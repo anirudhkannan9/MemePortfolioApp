@@ -6,7 +6,9 @@ import org.json.JSONObject;
 
 import java.util.Random;
 
-//The MemeStock class represents the information of a stock that a user can add to/have in their portfolio
+//The BoringStock class represents the information of a stock that a user can create
+// and add to/have in their portfolio
+//BoringStocks only decrease in value with time
 public class BoringStock implements Stock {
     //constants
     static final double CHANCE_OF_BOOM = 0.0;
@@ -20,6 +22,8 @@ public class BoringStock implements Stock {
 
     //constructor
     //REQUIRES: val > 0
+    //MODIFIES: this
+    //EFFECTS: creates BoringStock with given ticker and value
     public BoringStock(String st, double val) {
         this.stockTicker = st;
         this.currentValue = val;
@@ -79,6 +83,7 @@ public class BoringStock implements Stock {
 
     }
 
+    //EFFECTS: translates this to JSONObject
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

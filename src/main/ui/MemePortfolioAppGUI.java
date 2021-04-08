@@ -15,6 +15,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 //REFERENCES: derived from SpaceInvaders project
+//represents the creation & running of a console version of the MemePortfolioAppGUI
+
 public class MemePortfolioAppGUI extends JFrame {
     //fields
     private Portfolio portfolio;
@@ -22,6 +24,7 @@ public class MemePortfolioAppGUI extends JFrame {
     private SummaryPanel sp;
     private ButtonPanel bp;
 
+    //MODIFIES: this
     //EFFECTS: sets up window in which Portfolio can be interacted with
     public MemePortfolioAppGUI() {
         super("Meme Portfolio");
@@ -56,6 +59,7 @@ public class MemePortfolioAppGUI extends JFrame {
     }
 
 
+    //MODIFIES: this
     // Start the Portfolio
     public static void main(String[] args) {
         new MemePortfolioAppGUI();

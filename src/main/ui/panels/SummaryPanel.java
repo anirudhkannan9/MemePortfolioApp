@@ -5,6 +5,7 @@ import model.portfolio.Portfolio;
 import javax.swing.*;
 import java.awt.*;
 
+//represents a panel containing textual data summarizing current/past state of the portfolio
 public class SummaryPanel extends JPanel {
     //fields: with messages to be displayed
     private static final String PORTFOLIO_VAL_TXT = "Portfolio value: $";

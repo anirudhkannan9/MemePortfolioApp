@@ -19,6 +19,8 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
+//represents a panel containing buttons allowing the user to perform various activities
+//e.g. adding stocks, saving/writing, incrementing time
 public class ButtonPanel extends JPanel {
     private Portfolio portfolio;
     private static final int BTN_WIDTH = 150;
@@ -56,12 +58,16 @@ public class ButtonPanel extends JPanel {
         addOtherButton();
     }
 
+
+    //MODIFIES: this
+    //EFFECTS: adds random button to panel (for testing)
     public void addOtherButton() {
         JButton otherButton = new JButton("OTher button with a lot of text taking up space");
         otherButton.setPreferredSize(new Dimension(BTN_WIDTH, BTN_HEIGHT * 2));
         add(otherButton);
     }
 
+    //MODIFIES: this
     //EFFECTS: adds addMemeStockButton to panel
     public void addAddMemeStockButton(Portfolio p) {
         addMemeStockBtn = new JButton("Add Meme Stock");

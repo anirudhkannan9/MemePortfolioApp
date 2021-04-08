@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import java.util.Random;
 
 //The MemeStock class represents the information of a stock that a user can add to/have in their portfolio
+//The stock has a small possibility of increasing in value significantly
 public class MemeStock implements Stock, RandomDouble {
     //constants
     static final double CHANCE_OF_BOOM = 0.1;
@@ -92,6 +93,7 @@ public class MemeStock implements Stock, RandomDouble {
         }
     }
 
+    //EFFECTS: translates this to JSONObject
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

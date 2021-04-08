@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+// Represents a writer that writes portfolio to JSON data stored in file
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;

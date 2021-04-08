@@ -15,8 +15,13 @@ import java.io.File;
 
 import static java.lang.Double.parseDouble;
 
+//represents a panel containing buttons allowing the user to add BoringStocks
+
 public class AddBoringStockPanel extends JPanel {
 
+    //MODIFIES: this
+    //EFFECTS: constructs AddBoringStockPanel referring to the given MemePortfolioAppGUI, Portfolio
+    //and creates button and corresponding action listener allowing user to add BoringStock
     public AddBoringStockPanel(MemePortfolioAppGUI memePortfolioAppGUI, Portfolio p) {
         Dimension size = getPreferredSize();
         size.width = 250;

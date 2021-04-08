@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+////represents a panel containing buttons allowing the user to add BoringStocks
 
 public class AddMemeStockPanel extends JPanel {
     //constants
@@ -26,6 +27,9 @@ public class AddMemeStockPanel extends JPanel {
     private List<MemeStock> memeStocks = new ArrayList<>();
     private MemePortfolioAppGUI memePortfolioAppGUI;
 
+    //MODIFIES: this
+    //EFFECTS: constructs AddMemeStockPanel referring to the given MemePortfolioAppGUI, Portfolio
+    //and creates button and corresponding action listener allowing user to add MemeStock
     public AddMemeStockPanel(MemePortfolioAppGUI memePortfolioAppGUI, Portfolio p) {
         portfolio = p;
         setBackground(new Color(180, 180, 180));
@@ -39,6 +43,8 @@ public class AddMemeStockPanel extends JPanel {
         super.paintComponent(g);
     }
 
+    //MODIFIES: this
+    //EFFECTS: creates a button and corresponding action listener for every MemeStock user is able to add
     public void drawMemeStockButtons() {
         populateMemeStocks();
         //int x = 0;
