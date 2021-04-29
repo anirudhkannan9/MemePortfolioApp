@@ -63,5 +63,6 @@ public class MemePortfolioAppGUI extends JFrame {
     // Start the Portfolio
     public static void main(String[] args) {
         new MemePortfolioAppGUI();
+        new MemePortfolioAppConsole();
     }
 }

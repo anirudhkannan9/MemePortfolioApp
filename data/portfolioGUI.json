@@ -1,5 +1,27 @@
-{"stocks": [{
-    "ticker": "AMZN",
-    "type": "MemeStock",
-    "value": "3270.0"
-}]}
+{"stocks": [
+    {
+        "ticker": "TSLA",
+        "type": "MemeStock",
+        "value": "839.0"
+    },
+    {
+        "ticker": "GME",
+        "type": "MemeStock",
+        "value": "58.0"
+    },
+    {
+        "ticker": "AMC",
+        "type": "MemeStock",
+        "value": "150.0"
+    },
+    {
+        "ticker": "NKLA",
+        "type": "MemeStock",
+        "value": "117.0"
+    },
+    {
+        "ticker": "CPSC",
+        "type": "BoringStock",
+        "value": "170.0"
+    }
+]}
