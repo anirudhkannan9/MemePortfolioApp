@@ -46,3 +46,5 @@ time), and the update() methods of the Observers would be implemented according 
 the class MemeStock and the interface RandomDouble; I couldn't get this to work in the UML diagram drawing program, so
 I omitted it from the diagram. 
 
+C
+
